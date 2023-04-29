@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { TUpdateMovie } from "../interfaces";
 import { createMovieService, deleteMovieService, listMoviesService, updateMovieService } from '../services';
+import { returnAllMoviesSchema } from '../schemas';
 
 const createMovieController = async (
     req: Request,
@@ -15,7 +16,7 @@ const listMoviesController = async (
     req: Request,
     res: Response
 ) => {
-    const params = req.params;
+    const params = req.query;
 
     const movieListed = await listMoviesService(params)
 
